@@ -21,7 +21,8 @@ dst.close(); src.close()
 "
 
 tar czf "$DEST/texnopark-$STAMP.tar.gz" -C "$ROOT/data" db/backup.sqlite3 media
-rm -f "$ROOT/data/db/backup.sqlite3"
+# Vaqtinchalik fayl konteyner foydalanuvchisiga tegishli — konteyner ichidan o'chiriladi
+"${COMPOSE[@]}" exec -T backend rm -f /app/data/backup.sqlite3
 
 find "$DEST" -name 'texnopark-*.tar.gz' -mtime +"$KEEP_DAYS" -delete
 echo "$(date '+%F %T') backup: $DEST/texnopark-$STAMP.tar.gz ($(du -h "$DEST/texnopark-$STAMP.tar.gz" | cut -f1))"
