@@ -15,6 +15,7 @@ api_patterns = [
     path('', include('apps.projects.urls')),
     path('', include('apps.news.urls')),
     path('', include('apps.applications.urls')),
+    path('dashboard/', include('apps.dashboard.urls')),
     path('schema/', SpectacularAPIView.as_view(), name='schema'),
     path('docs/', SpectacularSwaggerView.as_view(url_name='schema'), name='swagger-ui'),
 ]

@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # Third-party
     'rest_framework',
+    'rest_framework.authtoken',
     'corsheaders',
     'django_filters',
     'drf_spectacular',
@@ -52,6 +53,7 @@ INSTALLED_APPS = [
     'apps.projects',
     'apps.news',
     'apps.applications',
+    'apps.dashboard',
 ]
 
 MIDDLEWARE = [
@@ -168,8 +170,13 @@ REST_FRAMEWORK = {
     # Formalar (POST /api/applications/) uchun spamga qarshi cheklov
     'DEFAULT_THROTTLE_RATES': {
         'applications': os.getenv('APPLICATIONS_THROTTLE_RATE', '10/hour'),
+        # Dashboard login: parolni tanlab topishga qarshi
+        'login': os.getenv('LOGIN_THROTTLE_RATE', '5/minute'),
     },
 }
+
+# Dashboard sessiyasi (token) amal qilish muddati, soat
+DASHBOARD_TOKEN_TTL_HOURS = int(os.getenv('DASHBOARD_TOKEN_TTL_HOURS', '72'))
 
 SPECTACULAR_SETTINGS = {
     'TITLE': 'Andijon Yoshlar Texnoparki API',
