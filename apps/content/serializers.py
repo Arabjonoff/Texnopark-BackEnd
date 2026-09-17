@@ -1,0 +1,36 @@
+from rest_framework import serializers
+
+from .models import Equipment, Feature, Partner, SiteSettings, Statistic
+
+
+class SiteSettingsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = SiteSettings
+        fields = (
+            'phone', 'email', 'address', 'working_hours', 'map_url',
+            'instagram_url', 'telegram_url', 'facebook_url', 'youtube_url',
+        )
+
+
+class StatisticSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Statistic
+        fields = ('id', 'value', 'suffix', 'label')
+
+
+class FeatureSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Feature
+        fields = ('id', 'title', 'description', 'icon', 'theme')
+
+
+class EquipmentSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Equipment
+        fields = ('id', 'title', 'description', 'icon', 'theme', 'image')
+
+
+class PartnerSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Partner
+        fields = ('id', 'name', 'logo', 'url')

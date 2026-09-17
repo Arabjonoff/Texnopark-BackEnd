@@ -1,0 +1,51 @@
+name: Backend CI/CD
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+concurrency:
+  group: backend-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.14"
+          cache: pip
+
+      - name: Paketlarni o'rnatish
+        run: pip install -r requirements.txt
+
+      - name: Migratsiyalar unutilmaganini tekshirish
+        run: python manage.py makemigrations --check --dry-run
+
+      - name: Django tekshiruvi
+        run: python manage.py check
+
+      - name: Testlar
+        run: python manage.py test
+
+  deploy:
+    needs: test
+    # Faqat main'ga push bo'lganda (PR'larda emas)
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    environment: production
+    steps:
+      - name: Serverga deploy
+        uses: appleboy/ssh-action@v1
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_KEY }}
+          port: ${{ secrets.SSH_PORT || 22 }}
+          command_timeout: 20m
+          script: bash /opt/texnopark/Texnopark-Back/deploy/deploy.sh backend

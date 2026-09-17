@@ -1,0 +1,585 @@
+{
+  "courses": [
+    {
+      "id": "flutter",
+      "title": "Flutter Development",
+      "shortDesc": "iOS va Android uchun zamonaviy mobil ilovalar yaratish",
+      "description": "Flutter — Google tomonidan ishlab chiqilgan zamonaviy cross-platform framework. Bitta kod yozib iOS va Android uchun bir vaqtda ilova yarating. Kurs davomida siz Dart tilini, Flutter widgetlarini, state management va API bilan ishlashni o'rganasiz.",
+      "icon": "smartphone",
+      "color": "bg-blue-500",
+      "colorLight": "from-blue-500/20 to-blue-500/5",
+      "duration": "4 oy",
+      "level": "Boshlang'ich → O'rta",
+      "format": "Kuniga 3 soat, 5 kun",
+      "price": "Bepul",
+      "seats": 25,
+      "skills": [
+        "Dart",
+        "Flutter",
+        "Firebase",
+        "REST API",
+        "Git",
+        "UI/UX"
+      ],
+      "curriculum": [
+        {
+          "week": "1-2 hafta",
+          "topic": "Dart dasturlash tili asoslari"
+        },
+        {
+          "week": "3-4 hafta",
+          "topic": "Flutter widgetlari va layout"
+        },
+        {
+          "week": "5-6 hafta",
+          "topic": "Navigatsiya va State Management"
+        },
+        {
+          "week": "7-8 hafta",
+          "topic": "Firebase bilan ishlash"
+        },
+        {
+          "week": "9-10 hafta",
+          "topic": "REST API integratsiya"
+        },
+        {
+          "week": "11-12 hafta",
+          "topic": "Amaliy loyiha va App Store'ga chiqarish"
+        }
+      ],
+      "outcomes": [
+        "iOS va Android uchun to'liq ilova yaratish",
+        "Firebase orqali real-time ma'lumotlar bilan ishlash",
+        "App Store va Google Play'ga ilova chiqarish",
+        "Shaxsiy portfolio uchun tayyor loyiha"
+      ]
+    },
+    {
+      "id": "python",
+      "title": "Python & AI",
+      "shortDesc": "Sun'iy intellekt, ma'lumotlar tahlili va backend dasturlash",
+      "description": "Python — dunyodagi eng mashhur dasturlash tillaridan biri. Kurs davomida Python asoslaridan boshlab, ma'lumotlar tahlili, mashina o'qitish va sun'iy intellekt yaratishgacha bo'lgan yo'lni birgalikda o'tamiz.",
+      "icon": "terminal",
+      "color": "bg-yellow-500",
+      "colorLight": "from-yellow-500/20 to-yellow-500/5",
+      "duration": "5 oy",
+      "level": "Boshlang'ich → Yuqori",
+      "format": "Kuniga 3 soat, 5 kun",
+      "price": "Bepul",
+      "seats": 25,
+      "skills": [
+        "Python",
+        "NumPy",
+        "Pandas",
+        "TensorFlow",
+        "FastAPI",
+        "SQL"
+      ],
+      "curriculum": [
+        {
+          "week": "1-2 hafta",
+          "topic": "Python sintaksisi va OOP"
+        },
+        {
+          "week": "3-4 hafta",
+          "topic": "Ma'lumotlar tahlili (Pandas, NumPy)"
+        },
+        {
+          "week": "5-6 hafta",
+          "topic": "Vizualizatsiya va statistika"
+        },
+        {
+          "week": "7-9 hafta",
+          "topic": "Mashina o'qitish (Scikit-learn)"
+        },
+        {
+          "week": "10-12 hafta",
+          "topic": "Neyron tarmoqlar va TensorFlow"
+        },
+        {
+          "week": "13-16 hafta",
+          "topic": "Amaliy AI loyiha yaratish"
+        }
+      ],
+      "outcomes": [
+        "Ma'lumotlar tahlili va vizualizatsiya",
+        "Mashina o'qitish modellari yaratish",
+        "ChatBot yoki tavsiya tizimi qurish",
+        "AI portfolio loyihasi"
+      ]
+    },
+    {
+      "id": "fullstack",
+      "title": "Full-Stack Web",
+      "shortDesc": "Zamonaviy veb loyihalar va murakkab tizimlar ishlab chiqish",
+      "description": "Frontend (React, Next.js) va Backend (Node.js, PostgreSQL) ni birgalikda o'rganib, to'liq ishlaydigan web-ilovalar yarating. Real loyihalar orqali professional darajada ishlashni o'rganing.",
+      "icon": "layers",
+      "color": "bg-purple-500",
+      "colorLight": "from-purple-500/20 to-purple-500/5",
+      "duration": "6 oy",
+      "level": "O'rta → Professional",
+      "format": "Kuniga 4 soat, 5 kun",
+      "price": "Bepul",
+      "seats": 20,
+      "skills": [
+        "HTML/CSS",
+        "JavaScript",
+        "React",
+        "Next.js",
+        "Node.js",
+        "PostgreSQL",
+        "Docker"
+      ],
+      "curriculum": [
+        {
+          "week": "1-3 hafta",
+          "topic": "HTML, CSS, JavaScript chuqurlashish"
+        },
+        {
+          "week": "4-6 hafta",
+          "topic": "React va komponentlar arxitekturasi"
+        },
+        {
+          "week": "7-9 hafta",
+          "topic": "Next.js App Router va SSR"
+        },
+        {
+          "week": "10-12 hafta",
+          "topic": "Node.js va Express backend"
+        },
+        {
+          "week": "13-16 hafta",
+          "topic": "PostgreSQL va Prisma ORM"
+        },
+        {
+          "week": "17-20 hafta",
+          "topic": "Deploy, Docker va to'liq loyiha"
+        }
+      ],
+      "outcomes": [
+        "To'liq ishlaydigan web-ilova yaratish",
+        "Frontend va Backend ni mustaqil boshqarish",
+        "Server va bazalar bilan professional ishlash",
+        "GitHub'da portfolio va ish topish imkoniyati"
+      ]
+    },
+    {
+      "id": "robotics",
+      "title": "Robotics",
+      "shortDesc": "Elektronika, sxemotexnika va robototexnika asoslari",
+      "description": "Arduino va Raspberry Pi yordamida real qurilmalar yarating. Elektronika asoslaridan boshlab, murakkab robot tizimlarini boshqarishgacha bo'lgan yo'lni amaliy mashg'ulotlar orqali o'tkazamiz.",
+      "icon": "cpu",
+      "color": "bg-red-500",
+      "colorLight": "from-red-500/20 to-red-500/5",
+      "duration": "4 oy",
+      "level": "Boshlang'ich → O'rta",
+      "format": "Kuniga 3 soat, 5 kun",
+      "price": "Bepul",
+      "seats": 20,
+      "skills": [
+        "Arduino",
+        "C++",
+        "Raspberry Pi",
+        "Python",
+        "Elektronika",
+        "3D Printing"
+      ],
+      "curriculum": [
+        {
+          "week": "1-2 hafta",
+          "topic": "Elektronika asoslari va zanjirlar"
+        },
+        {
+          "week": "3-4 hafta",
+          "topic": "Arduino dasturlash (C++)"
+        },
+        {
+          "week": "5-6 hafta",
+          "topic": "Sensorlar va aktuatorlar"
+        },
+        {
+          "week": "7-8 hafta",
+          "topic": "Raspberry Pi va Linux"
+        },
+        {
+          "week": "9-10 hafta",
+          "topic": "Robot konstruksiyasi va mexanika"
+        },
+        {
+          "week": "11-12 hafta",
+          "topic": "Musobaqa roboti yaratish"
+        }
+      ],
+      "outcomes": [
+        "Mustaqil ravishda robot qurilmasi yaratish",
+        "Musobaqalarda ishtirok etish ko'nikmalari",
+        "Elektronika va dasturlashni birlashtirish",
+        "Texnopark laboratoriyasida amaliyot"
+      ]
+    },
+    {
+      "id": "3dmodeling",
+      "title": "3D Modeling",
+      "shortDesc": "3D printerlar uchun modellar yasash va muhandislik chizmachiligi",
+      "description": "Blender, Fusion 360 va SolidWorks dasturlarida 3D modellar yarating va ularni 3D printerda chop eting. Arxitektura, muhandislik va dizayn uchun zamonaviy 3D texnologiyalarni o'rganing.",
+      "icon": "box",
+      "color": "bg-cyan-500",
+      "colorLight": "from-cyan-500/20 to-cyan-500/5",
+      "duration": "3 oy",
+      "level": "Boshlang'ich",
+      "format": "Kuniga 3 soat, 5 kun",
+      "price": "Bepul",
+      "seats": 20,
+      "skills": [
+        "Blender",
+        "Fusion 360",
+        "3D Printing",
+        "SolidWorks",
+        "Rendering",
+        "Texturlash"
+      ],
+      "curriculum": [
+        {
+          "week": "1-2 hafta",
+          "topic": "3D modellashtirish asoslari (Blender)"
+        },
+        {
+          "week": "3-4 hafta",
+          "topic": "Murakkab shakllar va modifikatorlar"
+        },
+        {
+          "week": "5-6 hafta",
+          "topic": "Texturlash va rendering"
+        },
+        {
+          "week": "7-8 hafta",
+          "topic": "Fusion 360 va muhandislik modellari"
+        },
+        {
+          "week": "9-10 hafta",
+          "topic": "3D printerga tayyorlash (Slicing)"
+        },
+        {
+          "week": "11-12 hafta",
+          "topic": "Yakuniy loyiha — Chop etish va taqdimot"
+        }
+      ],
+      "outcomes": [
+        "Har qanday 3D model yaratish qobiliyati",
+        "3D printerda mahsulot chiqarish",
+        "Muhandislik va arxitektura uchun chizmalar",
+        "Portfolio uchun tayyor 3D loyihalar"
+      ]
+    }
+  ],
+  "events": [
+    {
+      "id": "andijon-ideathon-2026",
+      "title": "Andijon Ideathon 2026",
+      "category": "Ideathon",
+      "date": "12 Oktabr, 2026",
+      "time": "09:00 — 18:00",
+      "location": "Andijon Yoshlar Texnoparki, Asosiy zal",
+      "shortDesc": "Yoshlar o'rtasida eng yaxshi innovatsion g'oyalar tanlovi.",
+      "description": "Andijon Ideathon 2026 — bu 1 kunlik intensiv g'oyalar tanlovi bo'lib, unda yoshlar jamoa sifatida ijtimoiy va texnologik muammolarga innovatsion yechimlar taklif qiladilar. G'olib jamoalar texnopark tomonidan berilgan maxsus grantlar, mentolik va inkubatsiya dasturiga jalb qilinadi.",
+      "color": "bg-blue-500",
+      "colorLight": "from-blue-500/20 to-blue-500/5",
+      "prizes": [
+        "1-o'rin: 5,000,000 so'm grant + Texnopark inkubatsiyasi",
+        "2-o'rin: 3,000,000 so'm grant",
+        "3-o'rin: 1,500,000 so'm grant",
+        "Barcha ishtirokchilar: Sertifikat va sovg'alar"
+      ],
+      "schedule": [
+        {
+          "time": "09:00",
+          "activity": "Ro'yxatdan o'tish va ochilish marosimi"
+        },
+        {
+          "time": "10:00",
+          "activity": "Muammo bayoni va jamoa tuzish"
+        },
+        {
+          "time": "10:30",
+          "activity": "G'oyalar ishlab chiqish (brainstorming)"
+        },
+        {
+          "time": "13:00",
+          "activity": "Tushlik tanaffusi"
+        },
+        {
+          "time": "14:00",
+          "activity": "Prototiplash va taqdimot tayyorlash"
+        },
+        {
+          "time": "16:30",
+          "activity": "Jamoalar taqdimoti (har biri 5 daqiqa)"
+        },
+        {
+          "time": "17:30",
+          "activity": "Hakamlar baholashi va g'oliblar e'lon qilinishi"
+        }
+      ],
+      "requirements": [
+        "Yoshi 16 dan 30 gacha bo'lgan yoshlar",
+        "Jamoa soni: 2 dan 5 nafardan iborat",
+        "Oldindan ro'yxatdan o'tish majburiy",
+        "Laptop yoki planshet olib kelish tavsiya etiladi"
+      ],
+      "organizer": "Andijon Yoshlar Texnoparki",
+      "seats": 150,
+      "status": "open"
+    },
+    {
+      "id": "robotics-challenge",
+      "title": "Robotics Challenge",
+      "category": "Musobaqa",
+      "date": "25 Noyabr, 2026",
+      "time": "10:00 — 17:00",
+      "location": "Andijon Yoshlar Texnoparki, Robotics Lab",
+      "shortDesc": "Robototexnika bo'yicha amaliy musobaqa.",
+      "description": "Robotics Challenge — texnoparkning eng kutilgan musobaqalaridan biri. Ishtirokchilar avvaldan tayyor qilgan robotlarini maxsus to'siqlardan o'tkazadilar. Arduino va Raspberry Pi asosidagi robotlar uchun turli kategoriyalar mavjud. Musobaqa maktab o'quvchilari va talabalarga mo'ljallangan.",
+      "color": "bg-purple-500",
+      "colorLight": "from-purple-500/20 to-purple-500/5",
+      "prizes": [
+        "1-o'rin: Robototexnika to'plami (200$ qiymatida) + Kubuk",
+        "2-o'rin: Arduino Mega to'plami + Medal",
+        "3-o'rin: Raspberry Pi + Medal",
+        "Eng ijodiy dizayn: Maxsus mukofot"
+      ],
+      "schedule": [
+        {
+          "time": "10:00",
+          "activity": "Robotlarni ro'yxatdan o'tkazish va texnik nazorat"
+        },
+        {
+          "time": "11:00",
+          "activity": "1-tur: Avtomatik navigatsiya"
+        },
+        {
+          "time": "12:30",
+          "activity": "Tushlik tanaffusi"
+        },
+        {
+          "time": "13:30",
+          "activity": "2-tur: Ob'ektni topish va ko'chirish"
+        },
+        {
+          "time": "15:00",
+          "activity": "Final tur: Kompleks to'siqlar"
+        },
+        {
+          "time": "16:30",
+          "activity": "G'oliblar tantanasi va mukofotlar topshirish"
+        }
+      ],
+      "requirements": [
+        "Robot Arduino yoki Raspberry Pi asosida qurilgan bo'lishi shart",
+        "Robotning maksimal o'lchami: 30x30x30 sm",
+        "Musobaqa kuni robotni tayyor holda olib kelish kerak",
+        "Yoshi 12 dan 25 gacha"
+      ],
+      "organizer": "Andijon Yoshlar Texnoparki × Robotics Club",
+      "seats": 60,
+      "status": "upcoming"
+    },
+    {
+      "id": "startup-acceleration",
+      "title": "Startup Acceleration Workshop",
+      "category": "Workshop",
+      "date": "05 Dekabr, 2026",
+      "time": "09:00 — 17:00",
+      "location": "Andijon Yoshlar Texnoparki, Konferensiya zali",
+      "shortDesc": "Startaplarni tezkor rivojlantirish bo'yicha xorijiy ekspertlar bilan maxsus seminar.",
+      "description": "Bu workshop — startup asoschilariga va g'oya egaliga mo'ljallangan 1 kunlik intensiv dastur. Xorijdan taklif qilingan ekspertlar va muvaffaqiyatli startap asoschilari o'z tajribalarini baham ko'rishadi. Pitch tayyorlash, investorlar bilan muloqot va biznes model yaratish bo'yicha amaliy mashg'ulotlar o'tkaziladi.",
+      "color": "bg-emerald-500",
+      "colorLight": "from-emerald-500/20 to-emerald-500/5",
+      "prizes": [
+        "Barcha ishtirokchilarga: Sertifikat",
+        "Eng yaxshi pitch: Investor bilan uchrashuv imkoniyati",
+        "Top-3 g'oya: Texnopark inkubatsiyasiga qabul"
+      ],
+      "schedule": [
+        {
+          "time": "09:00",
+          "activity": "Ro'yxatdan o'tish va networking"
+        },
+        {
+          "time": "09:30",
+          "activity": "Ochilish: \"Startup ekotizimi\" ma'ruzasi"
+        },
+        {
+          "time": "10:30",
+          "activity": "Modul 1: G'oyadan biznes modelga"
+        },
+        {
+          "time": "12:00",
+          "activity": "Tushlik va networking"
+        },
+        {
+          "time": "13:00",
+          "activity": "Modul 2: Pitch deck tayyorlash"
+        },
+        {
+          "time": "14:30",
+          "activity": "Modul 3: Investor bilan muloqot (mock)"
+        },
+        {
+          "time": "16:00",
+          "activity": "Ishtirokchilar pitch taqdimoti"
+        },
+        {
+          "time": "17:00",
+          "activity": "Yakunlash va g'oliblar e'loni"
+        }
+      ],
+      "requirements": [
+        "O'z g'oyasi yoki early-stage startapi bo'lgan ishtirokchilar",
+        "Yoshi 18 dan 35 gacha",
+        "Oldindan ro'yxatdan o'tish majburiy (o'rinlar cheklangan)",
+        "Laptop olib kelish majburiy"
+      ],
+      "organizer": "Andijon Yoshlar Texnoparki × IT Park Uzbekistan",
+      "seats": 80,
+      "status": "open"
+    }
+  ],
+  "siteSettings": {
+    "phone": "+998 94 893 00 17",
+    "email": "info@texnopark.uz",
+    "address": "Andijon shahri, Bobur shoh ko'chasi, 39A-uy."
+  },
+  "statistics": [
+    {
+      "value": 5,
+      "suffix": "+",
+      "label": "Yil Tajriba"
+    },
+    {
+      "value": 100,
+      "suffix": "+",
+      "label": "Faol O'quvchilar"
+    },
+    {
+      "value": 4,
+      "suffix": "+",
+      "label": "Asosiy Yo'nalish"
+    }
+  ],
+  "features": [
+    {
+      "title": "Amaliy Loyihalar",
+      "description": "Nafaqat nazariya, balki real loyihalar ustida ishlash imkoniyati",
+      "icon": "briefcase",
+      "theme": "blue"
+    },
+    {
+      "title": "Startup Ekosistema",
+      "description": "G'oyadan tortib tayyor biznes (MVP) gacha bo'lgan yo'lda qo'llab-quvvatlash",
+      "icon": "rocket",
+      "theme": "cyan"
+    },
+    {
+      "title": "Zamonaviy Uskunalar",
+      "description": "3D printerlar, robototexnika to'plamlari va kuchli kompyuterlar. Har bir o'quvchi zamonaviy texnika bilan ishlash imkoniyatiga ega.",
+      "icon": "zap",
+      "theme": "purple"
+    },
+    {
+      "title": "Tajribali Mentorlar",
+      "description": "Sohaning yetakchi mutaxassislaridan to'g'ridan-to'g'ri ta'lim olish",
+      "icon": "users",
+      "theme": "emerald"
+    },
+    {
+      "title": "Xakaton & Musobaqalar",
+      "description": "O'z bilimlaringizni sinab ko'rish va grantlar yutish uchun imkoniyatlar",
+      "icon": "trophy",
+      "theme": "orange"
+    }
+  ],
+  "equipment": [
+    {
+      "title": "3D Printerlar",
+      "description": "Zamonaviy 3D printerlar yordamida g'oyalaringizni real modelga aylantiring",
+      "icon": "printer",
+      "theme": "blue"
+    },
+    {
+      "title": "Robotics Kits",
+      "description": "Arduino, Raspberry Pi va maxsus robototexnika to'plamlari",
+      "icon": "cpu",
+      "theme": "purple"
+    },
+    {
+      "title": "High-End Kompyuterlar",
+      "description": "Kuchli protsessor va grafik kartaga ega kompyuterlar",
+      "icon": "monitor",
+      "theme": "emerald"
+    },
+    {
+      "title": "Muhandislik Uskunalari",
+      "description": "Elektronika va muhandislik chizmachiligi uchun barcha asboblar",
+      "icon": "hammer",
+      "theme": "orange"
+    }
+  ],
+  "partners": [
+    {
+      "name": "IT Park"
+    },
+    {
+      "name": "Uzbekcoders"
+    },
+    {
+      "name": "INNO Texnopark"
+    },
+    {
+      "name": "Andijon viloyati hokimligi"
+    },
+    {
+      "name": "Yoshlar ishlari agentligi"
+    },
+    {
+      "name": "UNDP"
+    },
+    {
+      "name": "Tech Edu"
+    }
+  ],
+  "videoStories": [
+    {
+      "studentName": "Sardorbek",
+      "course": "flutter",
+      "result": "O'zining birinchi ilovasini App Store'ga joyladi",
+      "theme": "blue"
+    },
+    {
+      "studentName": "Malika",
+      "course": "python",
+      "result": "Sun'iy intellekt yordamida ishlaydigan chat-bot yaratdi",
+      "theme": "purple"
+    },
+    {
+      "studentName": "Javohir",
+      "course": "robotics",
+      "result": "Respublika robototexnika musobaqasida 1-o'rin",
+      "theme": "emerald"
+    },
+    {
+      "studentName": "Aziza",
+      "course": "3dmodeling",
+      "result": "Arxitektura loyihasining to'liq 3D modelini ishlab chiqdi",
+      "theme": "cyan"
+    }
+  ],
+  "news": [
+    {
+      "id": "yangi-oquv-mavsumi-qabul",
+      "title": "Yangi o'quv mavsumi uchun qabul boshlandi",
+      "category": "E'lon",
+      "excerpt": "Andijon Yoshlar Texnoparkida barcha yo'nalishlar bo'yicha yangi o'quv mavsumiga qabul e'lon qilinadi. Shoshiling, joylar soni cheklangan.",
+      "content": "Andijon Yoshlar Texnoparkida barcha yo'nalishlar bo'yicha yangi o'quv mavsumiga qabul e'lon qilinadi. Shoshiling, joylar soni cheklangan.\n\nBatafsil ma'lumot uchun biz bilan bog'laning yoki saytdagi \"Kursga yozilish\" formasini to'ldiring."
+    }
+  ]
+}
