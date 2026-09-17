@@ -17,6 +17,16 @@ class SiteSettings(TimeStampedModel):
     facebook_url = models.URLField('Facebook', blank=True)
     youtube_url = models.URLField('YouTube', blank=True)
 
+    # Bosh sahifadagi katta karta (Hero): rasm yoki video
+    hero_image = models.ImageField(
+        'bosh sahifa rasmi', upload_to='hero/', blank=True,
+        help_text="Vertikalroq (3:4) yoki kvadrat rasm yaxshi ko'rinadi",
+    )
+    hero_video_url = models.URLField(
+        'bosh sahifa videosi', blank=True,
+        help_text="YouTube havolasi yoki to'g'ridan-to'g'ri .mp4 havolasi. Video bo'lsa rasm o'rniga u ko'rsatiladi",
+    )
+
     class Meta:
         verbose_name = 'sayt sozlamalari'
         verbose_name_plural = 'sayt sozlamalari'

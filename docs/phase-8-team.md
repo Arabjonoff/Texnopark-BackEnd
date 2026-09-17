@@ -12,3 +12,13 @@ Frontend qismi: `Texnopark-FrontEnd/docs/phase-25-team-section.md`.
 
 ## Eslatma
 Jamoa a'zolari ma'lumoti to'qib chiqarilmadi — bo'lim bo'sh. Haqiqiy ma'lumotlar dashboard orqali kiritiladi; bo'sh bo'lsa bo'lim saytda umuman ko'rinmaydi.
+
+---
+
+## Qo'shimcha: bosh sahifadagi rasm/video kartasi
+`SiteSettings` ga ikkita maydon qo'shildi:
+- `hero_image` — bosh sahifadagi katta karta uchun rasm (`media/hero/`);
+- `hero_video_url` — YouTube/Vimeo yoki to'g'ridan-to'g'ri `.mp4` havolasi (kiritilsa rasm o'rniga video ko'rsatiladi).
+
+Ikkalasi ham public `GET /api/site-settings/` da va dashboard `PATCH /api/dashboard/site-settings/` (multipart, `heroImageClear=true` bilan rasmni olib tashlash) da. Testlar: 37 ta, hammasi o'tdi.
+Nginx'dagi yuklash chegarasi 10 MB dan **25 MB** ga oshirildi (rasm yuklash uchun).

@@ -190,3 +190,24 @@ class DashboardApiTests(APITestCase):
         response = self.client.post(f'{API}/team/', {'name': '', 'role': ''}, format='multipart')
         self.assertEqual(response.status_code, 400)
         self.assertEqual(set(response.json()), {'name', 'role'})
+
+    def test_hero_media_upload_and_clear(self):
+        self.login()
+        response = self.client.patch(f'{API}/site-settings/', {
+            'heroImage': png('hero.png'),
+            'heroVideoUrl': 'https://www.youtube.com/watch?v=abc123',
+        }, format='multipart')
+        self.assertEqual(response.status_code, 200, response.json())
+        self.assertTrue(response.json()['heroImage'].endswith('.png'))
+        self.assertEqual(SiteSettings.load().hero_video_url, 'https://www.youtube.com/watch?v=abc123')
+
+        response = self.client.patch(f'{API}/site-settings/', {'heroImageClear': 'true'}, format='multipart')
+        self.assertIsNone(response.json()['heroImage'])
+
+    def test_hero_media_in_public_api(self):
+        settings = SiteSettings.load()
+        settings.hero_video_url = 'https://youtu.be/abc123'
+        settings.save()
+        data = self.client.get('/api/site-settings/').json()
+        self.assertEqual(data['heroVideoUrl'], 'https://youtu.be/abc123')
+        self.assertIn('heroImage', data)

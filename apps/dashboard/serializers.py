@@ -261,12 +261,15 @@ class VideoStorySerializer(ImageClearMixin, serializers.ModelSerializer):
 
 
 @extend_schema_serializer(component_name='DashboardSiteSettings')
-class SiteSettingsSerializer(serializers.ModelSerializer):
+class SiteSettingsSerializer(ImageClearMixin, serializers.ModelSerializer):
+    image_fields = ('hero_image',)
+
     class Meta:
         model = SiteSettings
         fields = (
             'phone', 'email', 'address', 'working_hours', 'map_url',
-            'instagram_url', 'telegram_url', 'facebook_url', 'youtube_url', 'updated_at',
+            'instagram_url', 'telegram_url', 'facebook_url', 'youtube_url',
+            'hero_image', 'hero_video_url', 'updated_at',
         )
         read_only_fields = ('updated_at',)
 
