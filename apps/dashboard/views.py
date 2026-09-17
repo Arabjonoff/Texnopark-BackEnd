@@ -4,6 +4,7 @@ from django.contrib.auth import authenticate
 from django.db.models import Count
 from django.db.models.functions import TruncDate
 from django.utils import timezone
+from drf_spectacular.utils import OpenApiResponse, extend_schema
 from rest_framework import generics, status, viewsets
 from rest_framework.authtoken.models import Token
 from rest_framework.pagination import PageNumberPagination
@@ -13,7 +14,7 @@ from rest_framework.throttling import ScopedRateThrottle
 from rest_framework.views import APIView
 
 from apps.applications.models import Application
-from apps.content.models import Equipment, Feature, Partner, SiteSettings, Statistic
+from apps.content.models import Equipment, Feature, Partner, SiteSettings, Statistic, TeamMember
 from apps.courses.models import Course
 from apps.events.models import Event
 from apps.news.models import Post
@@ -40,6 +41,10 @@ class DashboardViewSet(DashboardMixin, viewsets.ModelViewSet):
 
 # --- Auth ------------------------------------------------------------------------------
 
+@extend_schema(
+    request=s.LoginSerializer,
+    responses={200: s.LoginResponseSerializer, 400: OpenApiResponse(description="Login yoki parol noto'g'ri")},
+)
 class LoginView(APIView):
     """Login/parol -> token. Faqat staff (is_staff) foydalanuvchilar kira oladi."""
 
@@ -69,12 +74,14 @@ class LoginView(APIView):
         })
 
 
+@extend_schema(request=None, responses={204: OpenApiResponse(description="Token o'chirildi")})
 class LogoutView(DashboardMixin, APIView):
     def post(self, request):
         request.auth.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
 
 
+@extend_schema(responses=s.UserSerializer)
 class MeView(DashboardMixin, APIView):
     def get(self, request):
         return Response(s.UserSerializer(request.user).data)
@@ -82,6 +89,7 @@ class MeView(DashboardMixin, APIView):
 
 # --- Bosh sahifa statistikasi -----------------------------------------------------------
 
+@extend_schema(responses={200: OpenApiResponse(description='Dashboard statistikasi (arizalar, kurslar, tadbirlar, yangiliklar)')})
 class StatsView(DashboardMixin, APIView):
     DAYS = 30
 
@@ -196,6 +204,12 @@ class EquipmentViewSet(OrderedContentViewSet):
     serializer_class = s.EquipmentSerializer
     queryset = Equipment.objects.all()
     search_fields = ('title', 'description')
+
+
+class TeamMemberViewSet(OrderedContentViewSet):
+    serializer_class = s.TeamMemberSerializer
+    queryset = TeamMember.objects.all()
+    search_fields = ('name', 'role')
 
 
 class PartnerViewSet(OrderedContentViewSet):

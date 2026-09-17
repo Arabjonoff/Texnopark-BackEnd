@@ -79,6 +79,24 @@ class Equipment(PublishableModel):
         return self.title
 
 
+class TeamMember(PublishableModel):
+    """Jamoa a'zosi — "Biz haqimizda" sahifasidagi jamoa bo'limi."""
+
+    name = models.CharField('ism-familiya', max_length=150)
+    role = models.CharField('lavozimi', max_length=150)
+    photo = models.ImageField('rasm', upload_to='team/', blank=True, help_text="Vertikal (3:4) rasm tavsiya etiladi")
+    bio = models.CharField('qisqacha', max_length=300, blank=True, help_text="Kartaga kursor olib borilganda ko'rinadi")
+    telegram_url = models.URLField('Telegram', blank=True)
+    linkedin_url = models.URLField('LinkedIn', blank=True)
+
+    class Meta(PublishableModel.Meta):
+        verbose_name = "jamoa a'zosi"
+        verbose_name_plural = 'jamoa'
+
+    def __str__(self):
+        return f'{self.name} — {self.role}'
+
+
 class Partner(PublishableModel):
     name = models.CharField('nomi', max_length=150)
     logo = models.ImageField('logotip', upload_to='partners/', blank=True)

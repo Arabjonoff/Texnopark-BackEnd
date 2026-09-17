@@ -1,10 +1,11 @@
 from django.contrib.auth import get_user_model
 from django.db import transaction
 from django.utils.text import slugify
+from drf_spectacular.utils import extend_schema_serializer
 from rest_framework import serializers
 
 from apps.applications.models import Application
-from apps.content.models import Equipment, Feature, Partner, SiteSettings, Statistic
+from apps.content.models import Equipment, Feature, Partner, SiteSettings, Statistic, TeamMember
 from apps.courses.models import Course, CurriculumItem
 from apps.events.models import Event, ScheduleItem
 from apps.news.models import Post
@@ -69,12 +70,14 @@ class StringListField(serializers.ListField):
 
 # --- Kurslar va tadbirlar -------------------------------------------------------------
 
+@extend_schema_serializer(component_name='DashboardCurriculumItem')
 class CurriculumItemSerializer(serializers.ModelSerializer):
     class Meta:
         model = CurriculumItem
         fields = ('week', 'topic')
 
 
+@extend_schema_serializer(component_name='DashboardCourse')
 class CourseSerializer(AutoSlugMixin, serializers.ModelSerializer):
     slug = serializers.SlugField(max_length=100, required=False, allow_blank=True)
     skills = StringListField(required=False)
@@ -114,6 +117,7 @@ class CourseSerializer(AutoSlugMixin, serializers.ModelSerializer):
         )
 
 
+@extend_schema_serializer(component_name='DashboardScheduleItem')
 class ScheduleItemSerializer(serializers.ModelSerializer):
     time = serializers.TimeField(format='%H:%M', input_formats=['%H:%M', '%H:%M:%S'])
 
@@ -122,6 +126,7 @@ class ScheduleItemSerializer(serializers.ModelSerializer):
         fields = ('time', 'activity')
 
 
+@extend_schema_serializer(component_name='DashboardEvent')
 class EventSerializer(AutoSlugMixin, serializers.ModelSerializer):
     slug = serializers.SlugField(max_length=150, required=False, allow_blank=True)
     start_time = serializers.TimeField(format='%H:%M', input_formats=['%H:%M', '%H:%M:%S'])
@@ -171,6 +176,7 @@ class EventSerializer(AutoSlugMixin, serializers.ModelSerializer):
 
 # --- Yangiliklar va sayt kontenti -----------------------------------------------------
 
+@extend_schema_serializer(component_name='DashboardPost')
 class PostSerializer(AutoSlugMixin, ImageClearMixin, serializers.ModelSerializer):
     image_fields = ('cover',)
     slug = serializers.SlugField(max_length=150, required=False, allow_blank=True)
@@ -184,18 +190,21 @@ class PostSerializer(AutoSlugMixin, ImageClearMixin, serializers.ModelSerializer
         read_only_fields = ('created_at', 'updated_at')
 
 
+@extend_schema_serializer(component_name='DashboardStatistic')
 class StatisticSerializer(serializers.ModelSerializer):
     class Meta:
         model = Statistic
         fields = ('id', 'value', 'suffix', 'label', 'order', 'is_published')
 
 
+@extend_schema_serializer(component_name='DashboardFeature')
 class FeatureSerializer(serializers.ModelSerializer):
     class Meta:
         model = Feature
         fields = ('id', 'title', 'description', 'icon', 'theme', 'order', 'is_published')
 
 
+@extend_schema_serializer(component_name='DashboardEquipment')
 class EquipmentSerializer(ImageClearMixin, serializers.ModelSerializer):
     image_fields = ('image',)
 
@@ -204,6 +213,16 @@ class EquipmentSerializer(ImageClearMixin, serializers.ModelSerializer):
         fields = ('id', 'title', 'description', 'icon', 'theme', 'image', 'order', 'is_published')
 
 
+@extend_schema_serializer(component_name='DashboardTeamMember')
+class TeamMemberSerializer(ImageClearMixin, serializers.ModelSerializer):
+    image_fields = ('photo',)
+
+    class Meta:
+        model = TeamMember
+        fields = ('id', 'name', 'role', 'photo', 'bio', 'telegram_url', 'linkedin_url', 'order', 'is_published')
+
+
+@extend_schema_serializer(component_name='DashboardPartner')
 class PartnerSerializer(ImageClearMixin, serializers.ModelSerializer):
     image_fields = ('logo',)
 
@@ -212,6 +231,7 @@ class PartnerSerializer(ImageClearMixin, serializers.ModelSerializer):
         fields = ('id', 'name', 'logo', 'url', 'order', 'is_published')
 
 
+@extend_schema_serializer(component_name='DashboardVideoStory')
 class VideoStorySerializer(ImageClearMixin, serializers.ModelSerializer):
     image_fields = ('thumbnail',)
     course = serializers.PrimaryKeyRelatedField(queryset=Course.objects.all(), required=False, allow_null=True)
@@ -240,6 +260,7 @@ class VideoStorySerializer(ImageClearMixin, serializers.ModelSerializer):
         return attrs
 
 
+@extend_schema_serializer(component_name='DashboardSiteSettings')
 class SiteSettingsSerializer(serializers.ModelSerializer):
     class Meta:
         model = SiteSettings
@@ -252,6 +273,7 @@ class SiteSettingsSerializer(serializers.ModelSerializer):
 
 # --- Murojaatlar ----------------------------------------------------------------------
 
+@extend_schema_serializer(component_name='DashboardApplication')
 class ApplicationSerializer(serializers.ModelSerializer):
     course_title = serializers.CharField(source='course.title', read_only=True, default=None)
     event_title = serializers.CharField(source='event.title', read_only=True, default=None)
@@ -269,6 +291,14 @@ class ApplicationSerializer(serializers.ModelSerializer):
 
 
 # --- Auth ------------------------------------------------------------------------------
+
+class LoginResponseSerializer(serializers.Serializer):
+    """Login javobi (faqat hujjat uchun)."""
+
+    token = serializers.CharField()
+    expires_at = serializers.DateTimeField()
+    user = serializers.DictField()
+
 
 class LoginSerializer(serializers.Serializer):
     username = serializers.CharField(error_messages={'blank': 'Loginni kiriting.', 'required': 'Loginni kiriting.'})

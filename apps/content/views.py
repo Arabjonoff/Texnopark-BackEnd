@@ -1,13 +1,14 @@
 from django.http import Http404
 from rest_framework import generics, mixins, viewsets
 
-from .models import Equipment, Feature, Partner, SiteSettings, Statistic
+from .models import Equipment, Feature, Partner, SiteSettings, Statistic, TeamMember
 from .serializers import (
     EquipmentSerializer,
     FeatureSerializer,
     PartnerSerializer,
     SiteSettingsSerializer,
     StatisticSerializer,
+    TeamMemberSerializer,
 )
 
 
@@ -47,6 +48,11 @@ class FeatureViewSet(PublishedListViewSet):
 class EquipmentViewSet(PublishedListViewSet):
     model = Equipment
     serializer_class = EquipmentSerializer
+
+
+class TeamMemberViewSet(PublishedListViewSet):
+    model = TeamMember
+    serializer_class = TeamMemberSerializer
 
 
 class PartnerViewSet(PublishedListViewSet):

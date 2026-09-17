@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Equipment, Feature, Partner, SiteSettings, Statistic
+from .models import Equipment, Feature, Partner, SiteSettings, Statistic, TeamMember
 
 
 @admin.register(SiteSettings)
@@ -37,6 +37,12 @@ class FeatureAdmin(OrderedAdmin):
 class EquipmentAdmin(OrderedAdmin):
     list_display = ('title', 'icon', 'theme', 'order', 'is_published')
     search_fields = ('title',)
+
+
+@admin.register(TeamMember)
+class TeamMemberAdmin(OrderedAdmin):
+    list_display = ('name', 'role', 'order', 'is_published')
+    search_fields = ('name', 'role')
 
 
 @admin.register(Partner)

@@ -5,7 +5,7 @@ from django.core.management import call_command
 from django.utils import timezone
 from rest_framework.test import APITestCase
 
-from apps.content.models import Partner
+from apps.content.models import Partner, TeamMember
 from apps.courses.models import Course
 from apps.events.models import Event
 from apps.news.models import Post
@@ -84,3 +84,12 @@ class SeededApiTests(APITestCase):
         self.assertEqual(slugs, ['yangi-oquv-mavsumi-qabul'])
         self.assertEqual(self.client.get('/api/news/kelajak/').status_code, 404)
         self.assertIn('content', self.client.get('/api/news/yangi-oquv-mavsumi-qabul/').json())
+
+    def test_team_endpoint(self):
+        TeamMember.objects.create(name='Aziz Azizov', role='Direktor', bio='10 yillik tajriba', order=0)
+        TeamMember.objects.create(name='Malika Karimova', role='Mentor', order=1, is_published=False)
+        data = self.client.get('/api/team/').json()
+        self.assertEqual([m['name'] for m in data], ['Aziz Azizov'])
+        self.assertEqual(data[0]['role'], 'Direktor')
+        self.assertIsNone(data[0]['photo'])
+        self.assertIn('telegramUrl', data[0])

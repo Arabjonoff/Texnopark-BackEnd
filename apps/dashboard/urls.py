@@ -12,6 +12,7 @@ router.register('statistics', views.StatisticViewSet, basename='dashboard-statis
 router.register('features', views.FeatureViewSet, basename='dashboard-feature')
 router.register('equipment', views.EquipmentViewSet, basename='dashboard-equipment')
 router.register('partners', views.PartnerViewSet, basename='dashboard-partner')
+router.register('team', views.TeamMemberViewSet, basename='dashboard-team-member')
 router.register('video-stories', views.VideoStoryViewSet, basename='dashboard-video-story')
 router.register('applications', views.ApplicationViewSet, basename='dashboard-application')
 

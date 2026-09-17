@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from .models import Equipment, Feature, Partner, SiteSettings, Statistic
+from .models import Equipment, Feature, Partner, SiteSettings, Statistic, TeamMember
 
 
 class SiteSettingsSerializer(serializers.ModelSerializer):
@@ -28,6 +28,12 @@ class EquipmentSerializer(serializers.ModelSerializer):
     class Meta:
         model = Equipment
         fields = ('id', 'title', 'description', 'icon', 'theme', 'image')
+
+
+class TeamMemberSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = TeamMember
+        fields = ('id', 'name', 'role', 'photo', 'bio', 'telegram_url', 'linkedin_url')
 
 
 class PartnerSerializer(serializers.ModelSerializer):

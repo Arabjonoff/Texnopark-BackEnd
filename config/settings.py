@@ -184,6 +184,12 @@ SPECTACULAR_SETTINGS = {
     'VERSION': '1.0.0',
     'SERVE_INCLUDE_SCHEMA': False,
     'CAMELIZE_NAMES': True,
+    # "status" nomi ikki modelda ishlatiladi — sxemada aniq nom beriladi
+    'ENUM_NAME_OVERRIDES': {
+        'EventStatusEnum': 'apps.events.models.Event.Status',
+        'ApplicationStatusEnum': 'apps.applications.models.Application.Status',
+        'ApplicationTypeEnum': 'apps.applications.models.Application.Type',
+    },
     'POSTPROCESSING_HOOKS': [
         'drf_spectacular.contrib.djangorestframework_camel_case.camelize_serializer_fields',
         'drf_spectacular.hooks.postprocess_schema_enums',

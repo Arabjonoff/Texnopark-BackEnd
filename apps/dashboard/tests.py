@@ -171,3 +171,22 @@ class DashboardApiTests(APITestCase):
         data = self.client.get(f'{API}/courses/', {'search': 'python', 'page_size': 2}).json()
         self.assertEqual(data['count'], 1)
         self.assertEqual(data['results'][0]['slug'], 'python')
+
+    def test_team_crud(self):
+        self.login()
+        response = self.client.post(f'{API}/team/', {'name': 'Aziz Azizov', 'role': 'Direktor', 'photo': png()}, format='multipart')
+        self.assertEqual(response.status_code, 201, response.json())
+        member_id = response.json()['id']
+        self.assertTrue(response.json()['photo'].endswith('.png'))
+
+        response = self.client.patch(f'{API}/team/{member_id}/', {'role': 'Bosh mentor'}, format='multipart')
+        self.assertEqual(response.json()['role'], 'Bosh mentor')
+
+        self.assertEqual(self.client.delete(f'{API}/team/{member_id}/').status_code, 204)
+        self.assertEqual(self.client.get(f'{API}/team/').json()['count'], 0)
+
+    def test_team_requires_name_and_role(self):
+        self.login()
+        response = self.client.post(f'{API}/team/', {'name': '', 'role': ''}, format='multipart')
+        self.assertEqual(response.status_code, 400)
+        self.assertEqual(set(response.json()), {'name', 'role'})
