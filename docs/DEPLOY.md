@@ -1,5 +1,10 @@
 # Serverga yuklash va CI/CD qo'llanmasi
 
+> **Joriy holat:** sayt `5.104.108.235` serverida, `https://yoshlar-texnoparki.uz` domenida ishlaydi.
+> Server boshqa loyihalar bilan umumiy (selen-crm, zelly, workers va boshqalar) — shuning uchun portlar **8010/3010**,
+> Nginx'da faqat `/etc/nginx/sites-available/yoshlar-texnoparki.uz` fayli qo'shilgan. Boshqa saytlarning konfiguratsiyasiga tegmang.
+> Repolar public — serverga klonlash uchun deploy key kerak emas (4-qadamni o'tkazib yuboring).
+
 ## Umumiy sxema
 
 ```
@@ -29,7 +34,7 @@ Server (Ubuntu VPS)
 | --- | --- |
 | VPS server | Ubuntu 22.04/24.04, kamida **2 GB RAM** (Next.js build uchun), 20 GB disk |
 | Domen | masalan `yoshlar-texnoparki.uz`, A-yozuvi server IP'siga yo'naltirilgan |
-| GitHub akkaunt | 2 ta repo: `Texnopark-Back` va `Texnopark-Front` (private bo'lishi mumkin) |
+| GitHub akkaunt | 2 ta repo: `Texnopark-BackEnd` va `Texnopark-FrontEnd` |
 
 ## 2. Kodni GitHub'ga yuklash (kompyuteringizda)
 
@@ -41,7 +46,7 @@ cd Yoshlar-Texnopark/Texnopark-Back
 git add .
 git commit -m "Backend: API, admin, deploy"
 git branch -M main
-git remote add origin git@github.com:<USERNAME>/Texnopark-Back.git
+git remote add origin https://github.com/Arabjonoff/Texnopark-BackEnd.git
 git push -u origin main
 
 # Frontend (git repo — andijon-yoshlar-texnoparki papkasi)
@@ -49,7 +54,7 @@ cd ../Texnopark-Front/andijon-yoshlar-texnoparki
 git add .
 git commit -m "Frontend: API integratsiya, deploy"
 git branch -M main          # hozirgi branch nomi master — main ga o'zgartiriladi
-git remote add origin git@github.com:<USERNAME>/Texnopark-Front.git
+git remote add origin https://github.com/Arabjonoff/Texnopark-FrontEnd.git
 git push -u origin main
 ```
 
@@ -102,8 +107,8 @@ GitHub bitta kalitni faqat bitta repoga qo'shishga ruxsat beradi — ikkinchi re
 
 ```bash
 cd /opt/texnopark
-git clone git@github.com:<USERNAME>/Texnopark-Back.git
-git clone git@github.com:<USERNAME>/Texnopark-Front.git
+git clone https://github.com/Arabjonoff/Texnopark-BackEnd.git Texnopark-Back
+git clone https://github.com/Arabjonoff/Texnopark-FrontEnd.git Texnopark-Front
 
 cp Texnopark-Back/deploy/.env.example Texnopark-Back/deploy/.env
 nano Texnopark-Back/deploy/.env     # DJANGO_SECRET_KEY va domenni to'ldiring
@@ -127,9 +132,7 @@ Nginx:
 
 ```bash
 sudo cp /opt/texnopark/Texnopark-Back/deploy/nginx/texnopark.conf /etc/nginx/sites-available/texnopark
-sudo nano /etc/nginx/sites-available/texnopark        # yoshlar-texnoparki.uz -> o'z domeningiz
 sudo ln -s /etc/nginx/sites-available/texnopark /etc/nginx/sites-enabled/
-sudo rm -f /etc/nginx/sites-enabled/default
 sudo nginx -t && sudo systemctl reload nginx
 
 # Bepul HTTPS sertifikat (avtomatik yangilanadi)
