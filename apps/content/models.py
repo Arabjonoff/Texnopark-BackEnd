@@ -7,6 +7,14 @@ from apps.core.models import Icon, PublishableModel, Theme, TimeStampedModel
 class SiteSettings(TimeStampedModel):
     """Sayt bo'ylab ishlatiladigan aloqa ma'lumotlari (bitta yozuv)."""
 
+    logo = models.ImageField(
+        'logotip', upload_to='logo/', blank=True,
+        help_text=(
+            "Kvadrat (1:1) PNG yoki SVG, fon shaffof bo'lsin. Kamida 200x200 px "
+            "(saytda 40x40 px ko'rsatiladi — Retina ekranlar uchun kattarog'i kerak). "
+            "Bo'sh qoldirilsa 'YT' harflari chiqadi."
+        ),
+    )
     phone = models.CharField('telefon', max_length=50)
     email = models.EmailField('elektron pochta')
     address = models.CharField('manzil', max_length=255)

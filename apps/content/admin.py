@@ -6,8 +6,10 @@ from .models import Equipment, Feature, Partner, SiteSettings, Statistic, TeamMe
 @admin.register(SiteSettings)
 class SiteSettingsAdmin(admin.ModelAdmin):
     fieldsets = (
+        ('Logotip', {'fields': ('logo',)}),
         ('Aloqa', {'fields': ('phone', 'email', 'address', 'working_hours', 'map_url')}),
         ('Ijtimoiy tarmoqlar', {'fields': ('instagram_url', 'telegram_url', 'facebook_url', 'youtube_url')}),
+        ('Bosh sahifa kartasi', {'fields': ('hero_image', 'hero_video_url')}),
     )
 
     def has_add_permission(self, request):
